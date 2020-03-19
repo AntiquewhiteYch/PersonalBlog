@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
+</head>
+
+<body>
+    <script src="./srcc/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <header class="header">
+        <div class="container">
+            <a class="title">我的个人博客 | 技术博客</a>
+            <ul class="menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="./about.html">关于我</a></li>
+                <li><a href="./guestbook.html">留言</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入标题关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="description">
+                <div class="about_title">关于我/微信18341573276</div>
+                <p>大三本科在校学生......（其他内容等我简历写完之后会再更新......）
+                </p>
+                
+                <div class="about_title">关于博客</div>
+                <p>用的技术吧，也就那些，部分组件用了vue控制，后端用nodejs写的（写的朦朦胧胧，不擅长后端......详细一点得说明同样等我简历写完之后会再更新......）</p>
+                
+            </div>
+            
+        </div>
+        <div class="content_right">
+            <div class="latiao">
+                <img src="./img/歪箭头.png" alt="">
+            </div>
+            <div class="right_module" id="right_tags">
+                <div>随机标签</div>
+                <a :href="'/?tag=' + tag" v-for="tag in tags"
+                    :style="{color: randomColor(), fontSize: randomSize()}">{{tag}}</a>
+
+            </div>
+            <div class="right_module" id="new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for="temp in titleList">
+                        <a :href="temp.link">{{temp.title}}</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="right_module" id="new_comments">
+                <div>最近评论</div>
+                <ul class="commentsul">
+                    <li v-for="comment in commentList">
+                        <div>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.date}}</span>
+                        </div>
+                        <div class="huanhang">{{comment.comment}}</div>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div>友情链接（开玩笑的）</div>
+                <ul>
+                    <li><a href="https://www.1688.com/" target="_blank">阿里巴巴</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <ul>
+            <li>html</li>
+            <li>javascript</li>
+            <li>vue</li>
+            <li>react</li>
+            <li>nodejs</li>
+        </ul>
+        <p>Copyright © 2020 AutiqueWhite</p>
+    </footer>
+    <script src="./js/about.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+
+</html>

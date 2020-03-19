@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>everyday</title>
+</head>
+<style>
+    #btn2,#btn3{
+        border: 1px solid;
+        background-color: white;
+        box-shadow: 1px 1px;
+        border-radius: 2px;
+    }
+
+</style>
+<body>
+  
+    <div id="div1">
+       
+    </div>
+    <!-- <button id="btn1">获取html</button> -->
+    <button id="btn2">提交</button>
+    <!-- <button id="btn3">getJSON</button> -->
+    
+    <script type="text/javascript" src="./srcc/wangEditor.min.js"></script>
+    <script src="./srcc/jquery.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#div1')
+        editor.customConfig.uploadImgShowBase64 = true
+        editor.create()
+    
+        // document.getElementById('btn1').addEventListener('click', function () {
+        //     // 读取 html
+        //     alert(editor.txt.html())
+        // }, false)
+    
+        document.getElementById('btn2').addEventListener('click', function () {
+            // 读取 text
+            alert(editor.txt.html())
+            var text = editor.txt.html()
+            $.ajax({
+            url: "/editEveryDay",
+            method: "post",
+            data: text,
+            success: function(resp){
+                console.log(resp)
+            },
+            error: function(resp){
+                console.log(resp)
+            }
+        })
+        }, false)
+
+    
+
+    </script>
+</body>
+</html>
