@@ -89,12 +89,16 @@ var sendComment = new Vue({
                 // var email = document.getElementById("comment_email").value;
                 var email = ""
                 var content = document.getElementById("comment_content").value;
+                content = content.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp');
+                // console.log(content)
                 axios({
-                    method: "get",
-                    url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email + "&content=" + content + "&parentName=" + replyName
+                    method: "post",
+                    url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email  + "&parentName=" + replyName,
+                    data: content
                 }).then(function(resp){
                     // console.log(resp)
                     alert("提交成功")
+                    location.reload()
                 }) 
                 
             }

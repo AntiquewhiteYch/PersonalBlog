@@ -6,7 +6,7 @@ var url = require("url")
 var path = new Map()
 
 function queryNewComments(request, response){
-    commentDao.queryNewComments(5, function(result){
+    commentDao.queryNewComments(function(result){
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "评论成功", result));
         response.end()
@@ -18,10 +18,12 @@ function addComment(request, response){
     var params = url.parse(request.url, true).query;
     var day = new Date();
     var s = day.getFullYear()+"-" + (day.getMonth()+1) + "-" + day.getDate();
-    commentDao.insertComment(parseInt(params.bid), parseInt(params.parent), params.parentName, params.userName, params.email, params.content, s, s, function(result){
-        response.writeHead(200);
-        response.write(respUtil.writeResult("success", "评论成功", result));
-        response.end()
+    request.on("data", function(data){
+        commentDao.insertComment(parseInt(params.bid), parseInt(params.parent), params.parentName, params.userName, params.email, data.toString(), s, s, function(result){
+            response.writeHead(200);
+            response.write(respUtil.writeResult("success", "评论成功", result));
+            response.end()
+        })
     })
 }
 

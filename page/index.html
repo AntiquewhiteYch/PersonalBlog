@@ -60,7 +60,7 @@
 
             </div>
             <div class="right_module" id="new_hot">
-                <div>最近热门</div>
+                <div>热门文章</div>
                 <ul>
                     <li v-for="temp in titleList">
                         <a :href="temp.link">{{temp.title}}</a>
@@ -69,18 +69,19 @@
                 </ul>
             </div>
             <div class="right_module" id="new_comments">
-                <div>最近评论</div>
+                <div class="comment-head">最近评论</div>
+                <div class="comment-head"><span class="comment-tool-left" @click="change(page-1)">上一页</span><span class="comment-tool-right" @click="change(page+1)">下一页</span></div>
                 <ul class="commentsul">
                     <li v-for="comment in commentList">
                         <div>
                             <span>{{comment.name}}</span>
                             <span class="pull_right">{{comment.date}}</span>
                         </div>
-                        <div class="huanhang">{{comment.comment}}</div>
+                        <div class="huanhang" v-html="comment.comment"></div>
                 </ul>
             </div>
             <div class="right_module">
-                <div>友情链接（开玩笑的）</div>
+                <div>一个链接</div>
                 <ul>
                     <li><a href="https://www.1688.com/" target="_blank">阿里巴巴</a></li>
                 </ul>

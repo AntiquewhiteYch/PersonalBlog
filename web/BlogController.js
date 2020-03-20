@@ -58,7 +58,8 @@ path.set("/queryBlogByPage", queryBlogByPage)
 
 function editBlog(request, response){
     var params = url.parse(request.url, true).query;
-    var tags = params.tags.replace(/ /g,"").replace("，",",")
+    // var tags = params.tags.replace(/ /g,"").replace("，",",")
+    var tags = params.tags
     var day = new Date();
     var s = day.getFullYear()+"-" + (day.getMonth()+1) + "-" + day.getDate();
     request.on("data", function(data){

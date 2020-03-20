@@ -156,7 +156,15 @@ body{
     font-size: 14px;
     color: #777777;
     width: 98%;
-    word-wrap:break-word 
+    word-wrap:break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    max-height: 40px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .right_module ul li div span{
     font-size: 14px;
@@ -185,6 +193,22 @@ body{
      font-size: 14px;
      line-height: 30px;
  }
+ .right_module .comment-head{
+    padding: 15px 5px 0px 0px ;
+    width: 47%;
+    display: inline-block;
+ }
+ .right_module .comment-tool-left{
+     width: 60px;
+     text-align: right;
+     margin-left: 60px;
+ }
+ .right_module .comment-tool-right{
+    width: 60px;
+    text-align: right;
+}
+
+
  .footer{
     width: 100%;
     height: 50px;

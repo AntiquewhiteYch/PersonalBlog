@@ -109,3 +109,10 @@ var sendComment = new Vue({
        this.changeCode();
     }
 })
+var about = new Vue({
+    el: ".description",
+    data: {
+        aboutblog: ``
+        
+    }
+})

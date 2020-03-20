@@ -1,9 +1,9 @@
 var dbutil = require("./DBUtil");
 
-function queryNewComments(size, success){
+function queryNewComments(success){
 
-    var querySql = "select * from comments order by id desc limit ?";
-    var params = [size];
+    var querySql = "select * from comments order by id desc";
+    var params = [];
 
     var connection = dbutil.createConnection()
     connection.connect();
