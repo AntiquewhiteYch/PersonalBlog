@@ -88,9 +88,18 @@ var sendComment = new Vue({
                 var replyName = document.getElementById("comment_reply_name").value
                 // var email = document.getElementById("comment_email").value;
                 var email = ""
-                var content = document.getElementById("comment_content").value;
-                content = content.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp');
-                // console.log(content)
+                var ct = document.getElementById("comment_content").value;
+                ct = ct.replace(/&/g, "&amp;")
+                var content = ct.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+
+                content = content.split("\n")
+                for (var i = 0; i < content.length; i++) {
+                    content[i] = "<p>" + content[i] + "<p/>"
+                    content[i] = content[i].replace(/\s/g, "&nbsp;")
+
+                }
+                content = content.join()
+                content = content.replace(/,/g, "")
                 axios({
                     method: "post",
                     url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email  + "&parentName=" + replyName,

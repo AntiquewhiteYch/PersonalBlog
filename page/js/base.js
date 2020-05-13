@@ -82,7 +82,7 @@ const newComments = new Vue({
                 }else{
                     newComments.page = number
                 }
-                console.log(number,newComments.page)
+                // console.log(number,newComments.page)
                 var result = [];
                 for (var i = newComments.page * 5; i < (newComments.page + 1) * 5; i++) {
                     var temp = {};
@@ -103,7 +103,7 @@ const newComments = new Vue({
             method: "get",
             url: "/queryNewComments"
         }).then(function (resp) {
-            console.log(resp)
+            // console.log(resp)
             newComments.allcomment = resp.data.data
             newComments.change()
         })
@@ -112,18 +112,26 @@ const newComments = new Vue({
 
 var latiao = document.getElementsByClassName("latiao")[0];
 var body = document.getElementsByTagName("body")[0];
-window.onscroll = function () {
+function throttle(fn, time){
+    var timer
+    return function(...args){
+        if(timer){
+            return
+        }
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+            timer = null
+        }, time);
+    }
+}
+function dong(){
     if (document.documentElement.scrollTop > 1000) {
         latiao.className = "latiao dong";
+    }else if(document.documentElement.scrollTop == 0){
+        latiao.className = "latiao";
     }
-    // console.log(document.documentElement.scrollTop)
-    // if(document.documentElement.scrollTop < 5){
-    //     body.style.backgroundPositionY =  "0px"
-    // }else {
-    //     body.style.backgroundPositionY = document.documentElement.scrollTop + "px"
-    // }
-    // console.log(body.style.backgroundPositionY)
 }
+window.addEventListener("scroll",throttle(dong, 700))
 latiao.onclick = function () {
     latiao.className = "latiao";
     document.documentElement.scrollTop = 0;

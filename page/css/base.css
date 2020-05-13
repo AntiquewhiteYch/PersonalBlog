@@ -1,11 +1,13 @@
 *{
     margin:0px;
-    padding:0px
+    padding:0px;
+    
 }
 /* @font-face{  //导入字体包的东西
     font-family: "MyIcon";
     src: url("../font/    ")
 } */
+/* html{ filter:grayscale(100%) !important;}  */
 body{
     background-image: url("../img/破戒僧.jpg");
     text-align: center;
